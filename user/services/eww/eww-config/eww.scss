@@ -1,0 +1,243 @@
+* { all: unset }
+
+@import 'colors';
+
+/* Global Settings */
+.bar {
+  background-color: $background;
+}
+
+tooltip.background {
+  background-color: $background;
+  font-size: $font-size;
+  color: $text;
+  border-radius: 10px;
+}
+
+tooltip label {
+  margin: 2px;
+}
+
+scale trough {
+  all: unset;
+  background-color: $background2;
+  border-radius: 16px;
+  min-height: 10px;
+  min-width: 70px;
+  margin: 0px 10px 0px 0px;
+}
+
+/* Launcher Settings */
+.launcher {
+  font-size: 24px;
+  margin: 5px 4px 5px 10px;
+  color: $text2;
+}
+
+/* Workspaces */
+.works {
+  font-size: $font-size;
+  font-weight: normal;
+  margin: 8px 0px 8px 0px;
+  background-color: $background;
+}
+.u, .u1, .u2, .u3, .u4, .u5, .u6, .u11, .u22, .u33, .u44, .u55, .u66 {
+  margin: 0px 10px 0px 0px;
+}
+/* Unoccupied */
+.u {
+color: $background2;
+}
+/* Occupied */
+.u1, .u2, .u3, .u4, .u5, .u6, .u11, .u22, .u33, .u44, .u55, .u66 {
+  color: $text3;
+} 
+/* Focused */
+.u11, .u22, .u33, .u44, .u55, .u66 {
+  color: $text2;
+}
+
+/* Separ Module Settings */
+.separ {
+        color: $background2;
+        font-weight: bold;
+        font-size: $font-size;
+        margin: 0px 8px 0px 8px
+};
+
+/* Music Module Settings */
+.song_cover_art {
+  background-size: cover;	
+  background-position: center;
+  min-height: 30px;
+  min-width: 30px;
+  margin: 4px;
+}
+.song {
+  color: $text;
+  font-size : $font-size;
+  font-weight : bold;
+  margin : 3px;
+}
+.song_btn_play {
+  color: $text;
+  font-size : $font-size;
+  margin : 0px 3px 0px -3px;
+}
+.song_btn_prev, .song_btn_next {
+  color: $text;
+  font-size : 12px;
+  margin : 0px 0px 0px 0px;
+
+}
+
+/* Music PopUp Module Settings */
+.music_pop {
+  background-color: $background;
+  border-radius: 16px;
+}
+.music_cover_art {
+  background-size: cover;
+  background-position: center;
+  min-height: 100px;
+  min-width: 170px;
+  margin: 20px;
+  border-radius: 10px;
+}
+.music {
+  color: $text;
+  font-size : $font-size;
+  font-weight : bold;
+  margin : 20px 0px 0px -15px;
+}
+.music_artist {
+  color: $text;
+  font-size : $font-size;
+  font-weight : normal;
+  margin : 0px 0px 0px 0px;
+}
+.music_btn_prev, .music_btn_play, .music_btn_next {
+  font-family: Iosevka Nerd Font;
+}
+.music_btn_prev {
+  color: $text;
+  font-size : $font-size;
+  font-weight : normal;
+  margin: 0px 0px 0px 0px;
+}
+.music_btn_play {
+  color: $text;
+  font-size : $font-size;
+  font-weight : normal;
+  margin: 0px 0px 0px 0px;
+}
+.music_btn_next {
+  color: $text;
+  font-size : $font-size;
+  font-weight : normal;
+  margin: 0px 0px 0px 0px;
+}
+.music_bar scale trough highlight {
+  all: unset;
+  background-color: $text2;
+  border-radius: 24px;  
+}
+.music_bar scale trough {
+  all: unset;
+  background-color: $background2;
+  border-radius: 24px;
+  min-height: 13px;
+  min-width: 190px;
+  margin : -10px 10px 20px 0px;
+}
+
+
+/* Volume Module Settings */
+.volbar trough highlight {
+  background-color: $text2;
+  border-radius: 10px;
+}
+.volume_icon {
+    font-size: $font-size;
+    color: $text;
+  margin: 0px 10px 0px 5px;
+}
+
+/* Clock Module Settings */
+.clock_time_sep {
+  font-size: $font-size;
+  color: $text;
+  //margin: 0px 4px 1px 4px;
+}
+.clock_time_class, .clock_minute_class {
+  font-size: $font-size;
+}
+.clock_date_class {
+  font-size: $font-size;
+  margin: 0px 0px 0px 5px;
+  color: $text2;
+}
+.clock_minute_class {
+  //margin: 0px 20px 0px 3px;
+  color: $text;
+}
+
+.clock_time_class {
+  color: $text;
+}
+
+
+/* Calendar Module Settings */
+.cal {
+  background-color: $background;
+  font-family: JetBrainsMono Nerd Font;
+  font-size: $font-size;
+  font-weight: normal;
+  border-radius: 20px;
+  .cal-in {
+    padding: 0px 10px 0px 10px;
+    color: $text;
+    .cal {
+      &.highlight {
+        padding: 20px;
+      }
+      padding: 5px 5px 5px 5px;
+      margin-left: 10px;
+    }
+  }
+}
+calender {
+  color: $text;
+}
+calendar:selected {
+  color: $text2;
+}
+calendar.header {
+  color: $text2;
+  font-weight: bold;
+}
+calendar.button {
+  color: $text2;
+}
+calendar.highlight {
+  color: $text2;
+  font-weight: bold;
+}
+calendar:indeterminate {
+  color: $text;
+}
+
+/* PowerMenu Module Settings */
+.powermenu {
+  color: $text;
+  margin-right: 10px;
+  font-size:  $font-size;
+}
+.button-reboot {
+  color: $text2;
+  font-size: $font-size;
+}
+.button-logout {
+  color: $text2;
+  font-size: $font-size;
+}
