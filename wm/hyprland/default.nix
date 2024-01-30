@@ -6,13 +6,15 @@
     portalPackage = pkgs.xdg-desktop-portal-hyprland;
   };
 
+  security.pam.services.swaylock = {};
+
   services.xserver = {
     enable = true;
     layout = "ca";
     xkbVariant = "";
     displayManager = {
-      autoLogin = { # Enables Auto Login 
-        #enable = true;
+      autoLogin = { # Enables Auto Login
+        # enable = true;
         user = username;
       };
       gdm = {

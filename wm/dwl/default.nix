@@ -1,9 +1,5 @@
 { config, pkgs, ... }: {
 
-  imports = [
-    ./dwl.nix
-  ];
-
   environment.systemPackages = [ pkgs.dwl pkgs.yambar ];
 
   nixpkgs.overlays = [
@@ -16,7 +12,7 @@
         patches = [
           ./patches/attachbottom.patch
           ./patches/capslock.patch
-          #./patches/scratchpads.patch
+          # ./patches/scratchpads.patch
           ./patches/ipc.patch
         ];
       });

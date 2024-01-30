@@ -22,6 +22,7 @@ in
 
   imports = [
     ./cli.nix
+    ./update.nix
   ];
 
   programs.fish = {

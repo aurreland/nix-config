@@ -2,10 +2,11 @@
 
   imports = [
     ../../user/apps/app-launcher/wofi/default.nix
+    ../../user/apps/app-launcher/fuzzel/default.nix
     ../../user/apps/terminal/kitty/default.nix
     ../../user/services/eww/default.nix
     ../../user/services/mako/default.nix
-    ../../user/apps/app-launcher/bemenu/default.nix
+    ../../user/services/swaylock/default.nix
   ];
 
 
@@ -79,9 +80,8 @@
       windowrulev2 = float,class:^(org.keepassxc.KeePassXC)$
       windowrulev2 = float,class:^(kitty-dropterm)$
       windowrulev2 = opacity 0.80 0.70,class:^(org.keepassxc.KeePassXC)$
-      windowrulev2 = opacity 0.80 0.80,class:^(Code)$
-      windowrulev2 = opacity 0.80 0.80,class:^(dunst)$
       #windowrulev2 = opacity 0.80 0.80,class:^(Brave-browser)$
+      windowrulev2 = opacity 0.80 0.80,class:^(swaylock)$
 
       $mainMod = SUPER
 
@@ -102,6 +102,7 @@
       bind = $mainMod, K, exec, pypr toggle keepassxc
       bind = ,Print, exec, grim -g "$(slurp)" - | convert  - -shave  1x1 PNG:- | wl-copy
       bind = SHIFT, Print, exec, wl-paste | swappy -f -
+      bind = $mainMod, L, exec, swaylock
 
       # Move focus with mainMod + arrow keys
       bind = $mainMod, left, movefocus, l

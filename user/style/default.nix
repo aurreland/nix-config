@@ -14,12 +14,12 @@
     };
 
     fonts = {
-        #monospace = {
-        #    name = "Iosevka";
-        #    package = pkgs.iosevka;
-        #};
-        #serif = config.stylix.fonts.monospace;
-        #sansSerif = config.stylix.fonts.monospace;
+        # monospace = {
+           # name = "Fira Code";
+           # package = pkgs.fira-code;
+        # };
+        # serif = config.stylix.fonts.monospace;
+        # sansSerif = config.stylix.fonts.monospace;
         emoji = {
             name = "Noto Color Emoji";
             package = pkgs.noto-fonts-emoji-blob-bin;
@@ -40,5 +40,7 @@
     };
 
   };
-  
+
+  qt.platformTheme = "gtk3";
+
 }

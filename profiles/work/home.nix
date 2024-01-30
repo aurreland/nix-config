@@ -16,9 +16,10 @@
     # outputs.homeManagerModules.example
     (../../. + "/wm"+("/"+wm)+"/home.nix")
     (../../. + "/hosts"+("/"+host)+"/home.nix")
-    ../../user/apps/browser/firefox/default.nix
+    # ../../user/apps/browser/firefox/default.nix
     ../../user/apps/browser/qutebrowser/default.nix
     ../../user/services/music/default.nix
+    ../../user/apps/zathura/default.nix
     ../../user/apps/cli/lf/default.nix
     ../../user/apps/cli/neovim/default.nix
     ../../user/apps/cli/git/default.nix
@@ -27,6 +28,7 @@
     ../../user/lang/cc/default.nix
     ../../user/shell/default.nix
     ../../user/style/default.nix
+    ../../user/apps/discord/default.nix
   ];
 
   nixpkgs = {
@@ -51,10 +53,9 @@
   home.packages = with pkgs; [
     keepassxc
     brave
-    vscode
-    discord
+    partition-manager
     mpv
-    zathura
+    anki
   ];
 
   # Enable home-manager and git

@@ -1,7 +1,7 @@
 {
   description =  "Flake of Aurel";
 
-  outputs = { self, nixpkgs, home-manager, stylix, dwl-source, yambar-source, ... } @ inputs: 
+  outputs = { self, nixpkgs, home-manager, stylix, ... } @ inputs:
   let
     inherit (self) outputs;
 
@@ -20,7 +20,7 @@
     locale = "en_US.UTF-8";
     host = "main";
     profile = "main";
-    
+
     # ----- USER SETTINGS ----- #
     username = "aurel";
     name = "Aurel";
@@ -101,7 +101,7 @@
 
     # Stylix
     stylix.url = "github:danth/stylix";
-        
+
     # Nix-vim
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -113,20 +113,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dwl-source = {
-      url = "github:djpohly/dwl/eda0613cc4c657a4d4f0165aa8ccd75108545981"; 
-      flake = false;
+    nix-gaming = {
+      url = "github:fufexan/nix-gaming";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    yambar-source = {
-      url = "git+https://codeberg.org/dnkl/yambar";
-      flake = false;
-    };
-
-
-    #nix-gaming = {
-    #  url = "github:fufexan/nix-gaming";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
   };
 
 }
