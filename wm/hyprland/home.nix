@@ -1,7 +1,6 @@
 { inputs, outputs, lib, config, pkgs, dotfilesDir, ... }: {
 
   imports = [
-    ../../user/apps/app-launcher/wofi/default.nix
     ../../user/apps/app-launcher/fuzzel/default.nix
     ../../user/apps/terminal/kitty/default.nix
     ../../user/services/eww/default.nix
@@ -34,7 +33,7 @@
       exec-once = swww init
       exec-once = eww open bar
       $term = kitty
-      $menu = wofi --show drun
+      $menu = fuzzel
 
       input {
         kb_layout = ca

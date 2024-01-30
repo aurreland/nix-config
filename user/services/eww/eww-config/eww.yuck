@@ -1,6 +1,6 @@
 (defvar eww "$HOME/.nix-profile/bin/eww -c $HOME/.config/eww/")
 
-; Bar 
+; Bar
 
 (defwindow bar
   :monitor 0
@@ -18,18 +18,18 @@
     (center)
     (right)))
 
-(defwidget left [] 
-  (box :class "left" :orientation "h" :space-evenly false :halign "start" 
+(defwidget left []
+  (box :class "left" :orientation "h" :space-evenly false :halign "start"
     (launcher)
     (sep)
     (workspaces)))
 
 (defwidget center []
-  (box :class "center" :orientation "h" :space-evenly false :halign "center" 
+  (box :class "center" :orientation "h" :space-evenly false :halign "center"
     (music)))
-  
+
 (defwidget right []
-  (box :class "right" :orientation "h" :space-evenly false :halign "end" 
+  (box :class "right" :orientation "h" :space-evenly false :halign "end"
     (volume) (sep) (clock_module) (sep) (power)))
 
 ; Separator
@@ -39,10 +39,10 @@
 
 ; Launcher
 (defwidget launcher []
-  (button :class "launcher" :onclick "scripts/pop.sh launcher" "󱄅"))
+  (button :class "launcher" :onclick "" "󱄅"))
 
 ; Workspaces
-(deflisten workspace 
+(deflisten workspace
   "scripts/workspaces.sh")
 
 (defwidget workspaces []
@@ -50,57 +50,34 @@
 
 ;; Music
 (defpoll music :interval "10s"
-  "mpc current || true")      
+  "mpc current || true")
 
 (defvar music_reveal false)
 
 (defpoll song :interval "2s" "scripts/music_info.sh --song")
 (defpoll song_status :interval "2s" "scripts/music_info.sh --status")
 (defpoll cover_art :interval "2s" "scripts/music_info.sh --cover")
-    
+
 (defwidget music []
   (eventbox :onhover "${eww} update music_reveal=true"
             :onhoverlost "${eww} update music_reveal=false"
     (box :class "module-2" :orientation "h" :space-evenly false :vexpand false :hexpand false
       (box :class "song_cover_art" :vexpand false :hexpand false :style "background-image: url('${cover_art}');")
-      (button :class "song" :onclick "scripts/pop.sh music" song)
+      (label :class "song" :text song)
       (revealer :transition "slideright" :reveal music_reveal :duration "350ms"
         (box :vexpand false :hexpand false :orientation "h" :spacing 5
           (button :class "song_btn_prev" :onclick "scripts/music_info.sh --prev" "")
           (button :class "song_btn_play" :onclick "scripts/music_info.sh --toggle" song_status)
           (button :class "song_btn_next" :onclick "scripts/music_info.sh --next" ""))))))
 
-; Music Pop
-(defpoll song_artist :interval "2s"  "scripts/music_info.sh --artist")
-(defpoll current_status :interval "1s"  "scripts/music_info.sh --time")
-
-(defwidget music_pop []
-  (box :class "music_pop" :orientation "h" :space-evenly false :vexpand false :hexpand false
-    (box :class "music_cover_art" :vexpand false :hexpand false :style "background-image: url('${cover_art}');")
-    (box :orientation "v" :spacing 20 :space-evenly false :vexpand false :hexpand false
-      (label :halign "center" :class "music" :limit-width 13 :text song)
-      (label :halign "center" :class "music_artist" :limit-width 15 :text song_artist)
-      (box :orientation "h" :spacing 15 :halign "center" :space-evenly false :vexpand false :hexpand false
-        (button :class "song_btn_prev" :onclick "scripts/music_info.sh --prev" "")
-        (button :class "song_btn_play" :onclick "scripts/music_info.sh --toggle" song_status)
-        (button :class "song_btn_next" :onclick "scripts/music_info.sh --next" ""))
-      (box :class "music_bar" :halign "center" :vexpand "false" :hexpand "false" :space-evenly "false"
-				(scale :onchange "mpc -q seek {}%" :min 0 :active "true" :max 100 :value current_status)))))
-
-(defwindow music_win
-  :monitor 0
-  :stacking "overlay"
-  :geometry (geometry :x "0" :y "1%" :width 428 :height 104 :anchor "top center")
-  (music_pop))
-  
 ; Volume
 (defvar vol_reveal false)
   (defpoll volume_percent :interval "3s" "amixer -D pipewire sget Master | awk -F '[^0-9]+' '/Left:/{print $3}'")
-  
+
   (defwidget volume []
     (eventbox :onhover "${eww} update vol_reveal=true"
               :onhoverlost "${eww} update vol_reveal=false"
-      (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3" 
+      (box :class "module-2" :space-evenly "false" :orientation "h" :spacing "3"
         (revealer :transition "slideleft"
                   :reveal vol_reveal
                   :duration "350ms"
@@ -111,7 +88,7 @@
                     :max 100
                     :min 0
                     :onchange "amixer -D pipewire sset Master {}%" ))
-        (button   :onclick "scripts/pop.sh audio"   :class "volume_icon" ""))))  
+        (button   :onclick "pypr toggle volume"   :class "volume_icon" ""))))
 
 ; Clock
 (defpoll clock_time :interval "5m" "date +\%I")
@@ -122,34 +99,14 @@
 (defwidget clock_module []
   (eventbox :onhover "${eww} update time_rev=true"
 		        :onhoverlost "${eww} update time_rev=false"
-    (box :class "module" :space-evenly "false" :orientation "h" :spacing "3" 
+    (box :class "module" :space-evenly "false" :orientation "h" :spacing "3"
       (label :text clock_time :class "clock_time_class" )
       (label :text ":" :class "clock_time_sep" )
       (label :text clock_minute :class "clock_minute_class")
       (revealer :transition "slideleft"
 		            :reveal time_rev
 		            :duration "350ms"
-        (button :class "clock_date_class" :onclick "scripts/pop.sh calendar" clock_date)))))
-  
-; Calendar Pop
-(defpoll calendar_day :interval "20h" "date '+%d'")
-(defpoll calendar_year :interval "20h" "date '+%Y'")
-
-(defwidget cal []
-	(box :class "cal" :orientation "v"
-	  (box :class "cal-in"
-	    (calendar :class "cal" 
-			          :day calendar_day 
-			          :year calendar_year))))
-
-(defwindow calendar
-  :monitor 0
-	:geometry (geometry :x "10px" 
-						          :y "1%" 
-                      :anchor "top right"
-						          :width "270px" 
-						          :height "60px")
-  (cal))
+        (label :class "clock_date_class" :text clock_date)))))
 
 ; Power
 (defvar power false)
@@ -157,7 +114,7 @@
 (defwidget power []
   (eventbox :onhover "${eww} update power=true"
             :onhoverlost "${eww} update power=false"
-    (box  :orientation "h" 
+    (box  :orientation "h"
           :space-evenly "false"
           :hexpand "false"
           :class "powermenu"

@@ -37,6 +37,8 @@
       gtk.enable = true;
       hyprland.enable = false;
       dunst.enable = true;
+      fuzzel.enable = true;
+      foot.enable = true;
     };
 
   };

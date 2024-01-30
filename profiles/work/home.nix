@@ -56,6 +56,7 @@
     partition-manager
     mpv
     anki
+    piper
   ];
 
   # Enable home-manager and git
