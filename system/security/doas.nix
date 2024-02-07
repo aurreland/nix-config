@@ -4,7 +4,7 @@
   lib,
   config,
   pkgs,
-  username,
+  userSettings,
   ...
 }: {
 
@@ -12,7 +12,7 @@
   security.sudo.enable = true;
   security.doas.wheelNeedsPassword = false;
   security.doas.extraRules = [{
-    users = [ username ];
+    users = [ userSettings.username ];
     keepEnv = true;
     noPass = true;
   }];
@@ -20,6 +20,6 @@
   environment.shellAliases = {
     #sudo = "doas";
   };
- 
+
 }
-  
+

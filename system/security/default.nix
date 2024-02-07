@@ -4,7 +4,6 @@
   lib,
   config,
   pkgs,
-  username,
   ...
 }: {
 
@@ -14,5 +13,5 @@
     ./firejail.nix
     ./gpg.nix
   ];
-  
+
 }

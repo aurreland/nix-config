@@ -1,17 +1,10 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  locale,
-  timezone,
-  ...
-}: {
+{ config, systemSettings, ... }: {
 
   imports = [
     ./hardware-configuration.nix
     ../../system/hardware/pipewire.nix
+    ../../system/hardware/printing.nix
+    ../../system/hardware/time.nix
   ];
 
   # Boot loader
@@ -33,7 +26,7 @@
   boot.initrd.luks.devices."luks-67516d05-67c4-48b7-bb8b-83671bdfe23b".device = "/dev/disk/by-uuid/67516d05-67c4-48b7-bb8b-83671bdfe23b";
 
   # Set your time zone.
-  time.timeZone = timezone;
+  time.timeZone = systemSettings.timezone;
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 

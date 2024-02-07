@@ -18,11 +18,6 @@
         })
         {
 
-          "<UP>" = "<NOP>";
-          "<DOWN>" = "<NOP>";
-          "<LEFT>" = "<NOP>";
-          "<RIGHT>" = "<NOP>";
-
           "<Space>" = "<NOP>";
 
           # Esc to clear search results
@@ -65,11 +60,6 @@
           inherit action key;
         })
         {
-
-          "<UP>" = "<NOP>";
-          "<DOWN>" = "<NOP>";
-          "<LEFT>" = "<NOP>";
-          "<RIGHT>" = "<NOP>";
 
           # better indenting
           ">" = ">gv";

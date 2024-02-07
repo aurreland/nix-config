@@ -8,4 +8,9 @@
     ../../user/games/star-citizen.nix
   ];
 
+  home.packages = with pkgs; [
+    evtest
+    ani-cli
+  ];
+
 }

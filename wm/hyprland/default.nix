@@ -14,7 +14,7 @@
     xkbVariant = "";
     displayManager = {
       autoLogin = { # Enables Auto Login
-        # enable = true;
+        enable = false;
         user = username;
       };
       gdm = {

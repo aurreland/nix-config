@@ -1,17 +1,25 @@
-{ config, lib, pkgs, stylix, inputs, ... }:
-
-with config.lib.stylix.colors.withHashtag;
-with config.stylix.fonts;
-with config.lib.stylix;
-
+{ config, lib, pkgs, stylix, inputs, userSettings, ... }:
+let
+  themePath = "../../../themes/"+userSettings.theme+"/"+userSettings.theme+".yaml";
+  themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/polarity.txt"));
+  backgroundUrl = builtins.readFile (./. + "../../../themes"+("/"+userSettings.theme)+"/backgroundurl.txt");
+  backgroundSha256 = builtins.readFile (./. + "../../../themes/"+("/"+userSettings.theme)+"/backgroundsha256.txt");
+in
 {
 
   imports = [ inputs.stylix.nixosModules.stylix ];
 
   stylix = {
-    autoEnable = true;
-    image = ../../wallpaper;
-    polarity = "dark";
+    autoEnable = false;
+
+    polarity = themePolarity;
+
+    image = pkgs.fetchurl {
+      url = backgroundUrl;
+      sha256 = backgroundSha256;
+    };
+
+    base16Scheme = ./. + themePath;
 
     cursor = {
       package = pkgs.bibata-cursors;
@@ -47,6 +55,8 @@ with config.lib.stylix;
     };
   };
 
-  qt.platformTheme = "gtk3";
+  environment.sessionVariables = {
+    QT_QPA_PLATFORMTHEME = "qt5ct";
+  };
 
 }

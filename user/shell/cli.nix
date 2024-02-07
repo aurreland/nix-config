@@ -24,7 +24,8 @@
     fzf
     pandoc
     pciutils
-    vim 
+    vim
+    nix-doc
     tgpt
     (pkgs.callPackage ../../pkgs/pokemon-colorscripts.nix { })
     (pkgs.writeShellScriptBin "airplane-mode" ''

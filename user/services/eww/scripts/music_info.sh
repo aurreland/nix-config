@@ -20,7 +20,7 @@ get_song() {
 		echo "Offline"
 	else
 		echo "$song"
-	fi	
+    fi
 }
 
 ## Get artist
@@ -30,7 +30,7 @@ get_artist() {
 		echo ""
 	else
 		echo "$artist"
-	fi	
+	fi
 }
 
 ## Get time
@@ -40,7 +40,7 @@ get_time() {
 		echo "0"
 	else
 		echo "$time"
-	fi	
+	fi
 }
 get_ctime() {
 	ctime=`mpc status | grep "#" | awk '{print $3}' | sed 's|/.*||g'`
@@ -48,7 +48,7 @@ get_ctime() {
 		echo "0:00"
 	else
 		echo "$ctime"
-	fi	
+	fi
 }
 get_ttime() {
 	ttime=`mpc -f %time% current`
@@ -56,43 +56,8 @@ get_ttime() {
 		echo "0:00"
 	else
 		echo "$ttime"
-	fi	
-}
-
-## Get cover
-get_cover() {
-    FILE="${MUSIC_DIR}/$(mpc current -f %file%)"
-    cover_dir=`dirname "$FILE"`
-	cover="$cover_dir/Cover.jpg"
-	if [ -e "$cover" ]; then 
-		echo "$cover" 
-	else 
-		echo "images/music.png"
 	fi
-
-    # Check if the file is in MP3 format
-    #if [[ "$(file --brief --mime-type "$FILE")" == audio/mpeg ]]; then
-    #    ffmpeg -i "$FILE" -an -vcodec copy "$COVER" -y &> /dev/null
-	#	COVER_ART=""
-    #elif [[ "$(file --brief --mime-type "$FILE")" == audio/flac ]]; then
-    #    metaflac --export-picture-to="$COVER" "$FILE" &> /dev/null
-    #else
-    #    # Default cover image if format is not recognized
-    #    echo "images/music.png"
-    #    
-    #fi
-
-    # Check if the tool succeeded in extracting cover art
-    #file_directory=$(dirname "$FILE")
-    # Check if a cover.jpg file exists in the same directory
-    #cover_in_directory="${file_directory}/cover.jpg"
-    #if [ -e "$cover_in_directory" ]; then
-    #    echo "$cover_in_directory"
-    #else
-    #    echo "images/music.png"
-    #fi
 }
-
 
 ## Execute accordingly
 if [[ "$1" == "--song" ]]; then
@@ -107,8 +72,6 @@ elif [[ "$1" == "--ctime" ]]; then
 	get_ctime
 elif [[ "$1" == "--ttime" ]]; then
 	get_ttime
-elif [[ "$1" == "--cover" ]]; then
-	get_cover
 elif [[ "$1" == "--toggle" ]]; then
 	mpc -q toggle
 elif [[ "$1" == "--next" ]]; then

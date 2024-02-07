@@ -19,5 +19,9 @@
     jack.enable = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    qjackctl
+    pavucontrol
+  ];
 
 }

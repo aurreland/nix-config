@@ -1,11 +1,11 @@
-{ inputs, outputs, lib, config, pkgs, username, name, hostname, wm, host, ... }: {
+{ inputs, outputs, lib, config, pkgs, userSettings, systemSettings, ... }: {
 
   imports = [
-    (../../. + "/hosts"+("/"+host)+"/default.nix")
-    (../../. + "/wm"+("/"+wm)+"/default.nix")
+    (../../. + "/hosts"+("/"+systemSettings.host)+"/default.nix")
+    (../../. + "/wm"+("/"+userSettings.wm)+"/default.nix")
     ../../system/security/default.nix
     ../../system/style/default.nix
-    # ../../system/apps/virtualization.nix
+    ../../system/apps/virtualization.nix
   ];
 
   nixpkgs = {
@@ -54,16 +54,24 @@
   # Configure console keymap
   console.keyMap = "cf";
 
+  users.defaultUserShell = pkgs.fish;
+  programs.fish.enable = true;
+
   users.users = {
-    ${username} = {
+    ${userSettings.username} = {
       isNormalUser = true;
-      description = name;
+      description = userSettings.name;
       openssh.authorizedKeys.keys = [
 
       ];
       extraGroups = ["wheel" "networkmanager"];
     };
   };
+
+  # Removes xterm
+  services.xserver.excludePackages = [ pkgs.xterm ];
+
+  services.ratbagd.enable = true; # To make piper work
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.11";

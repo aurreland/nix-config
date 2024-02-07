@@ -15,18 +15,24 @@
     ];
 
     # ---- SYSTEM SETTINGS ---- #
-    hostname = "nixos";
-    timezone = "Europe/Paris";
-    locale = "en_US.UTF-8";
-    host = "main";
-    profile = "main";
+    systemSettings = {
+      hostname = "nixos";
+      timezone = "Europe/Paris";
+      locale = "en_US.UTF-8";
+      host = "main";
+      profile = "main";
+    };
 
     # ----- USER SETTINGS ----- #
-    username = "aurel";
-    name = "Aurel";
-    email = "aurelien.andreo@proton.me";
-    dotfilesDir = "~/.nix-config";
-    wm = "hyprland";
+    userSettings = {
+      username = "aurel";
+      name = "Aurel";
+      email = "aurelien.andreo@proton.me";
+      dotfilesDir = "~/.nix-config";
+      wm = "gnome";
+      term = "";
+      theme = "ashes";
+    };
 
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
@@ -54,17 +60,11 @@
       system = nixpkgs.lib.nixosSystem {
         specialArgs = {
           inherit inputs outputs;
-          inherit username;
-          inherit hostname;
-          inherit timezone;
-          inherit locale;
-          inherit name;
-          inherit wm;
-          inherit host;
-          inherit profile;
+          inherit userSettings;
+          inherit systemSettings;
         };
         modules = [
-          (./. + "/profiles"+("/"+profile)+"/configuration.nix")
+          (./. + "/profiles"+("/"+systemSettings.profile)+"/configuration.nix")
         ];
       };
     };
@@ -76,15 +76,11 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
         extraSpecialArgs = {
 	        inherit inputs outputs;
-	        inherit username;
-          inherit email;
-	        inherit host;
-	        inherit profile;
-          inherit wm;
-          inherit dotfilesDir;
+	        inherit userSettings;
+	        inherit systemSettings;
 	      };
         modules = [
-          (./. + "/profiles"+("/"+profile)+"/home.nix")
+          (./. + "/profiles"+("/"+systemSettings.profile)+"/home.nix")
         ];
       };
     };

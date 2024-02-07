@@ -1,24 +1,7 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  username,
-  host,
-  wm,
-  ...
-}: {
-  # You can import other home-manager modules here
+{ inputs, outputs, lib, config, pkgs, userSettings, systemSettings, ... }: {
   imports = [
-    # outputs.homeManagerModules.example
-    (../../. + "/wm"+("/"+wm)+"/home.nix")
-    (../../. + "/hosts"+("/"+host)+"/home.nix")
-    # ../../user/apps/browser/firefox/default.nix
-    ../../user/apps/browser/qutebrowser/default.nix
-    ../../user/services/music/default.nix
+    (../../. + "/wm"+("/"+userSettings.wm)+"/home.nix")
+    (../../. + "/hosts"+("/"+systemSettings.host)+"/home.nix")
     ../../user/apps/zathura/default.nix
     ../../user/apps/cli/lf/default.nix
     ../../user/apps/cli/neovim/default.nix
@@ -29,6 +12,8 @@
     ../../user/shell/default.nix
     ../../user/style/default.nix
     ../../user/apps/discord/default.nix
+    ../../user/services/music/default.nix
+    ../../user/apps/virtualization.nix
   ];
 
   nixpkgs = {
@@ -45,18 +30,40 @@
   };
 
   home = {
-    username = username;
-    homeDirectory = "/home/"+username;
+    username = userSettings.username;
+    homeDirectory = "/home/"+userSettings.username;
   };
 
-  # Add stuff for your user as you see fit:
   home.packages = with pkgs; [
-    keepassxc
-    brave
-    partition-manager
+    easytag
     mpv
     anki
     piper
+    shortwave
+    cozy
+    mousai
+    # textpieces
+    blanket
+    amberol
+    citations
+    dialect
+    emblem
+    # file shredder
+    fragments
+    # impression
+    junction
+    komikku
+    # letterpress
+    pika-backup
+    # paper clip
+    gnome-podcasts
+    newsflash
+    gnome-obfuscate
+    gnome.polari
+    gnome-secrets
+    tangram
+    # telegraph
+    wike
   ];
 
   # Enable home-manager and git

@@ -1,10 +1,18 @@
-{ config, pkgs, ... }:
+{ config, pkgs, ... }: {
 
-{
   # Enable printing
-  services.printing.enable = true;
-  services.avahi.enable = true;
-  services.avahi.nssmdns = true;
-  services.avahi.openFirewall = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ hplip ];
+  };
+  
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
+  };
+  
+
   environment.systemPackages = [ pkgs.cups-filters ];
+  
 }

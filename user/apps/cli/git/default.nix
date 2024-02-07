@@ -1,13 +1,13 @@
-{ inputs, outputs, lib, config, pkgs, username, email, ... }: {
-  
+{ inputs, outputs, lib, config, pkgs, userSettings, ... }: {
+
   programs = {
     git = {
       enable = true;
         userName = "aurreland";
-        userEmail = email;
+        userEmail = userSettings.email;
     };
   };
-  
+
   home.packages = [ pkgs.gh ];
 
 }

@@ -1,10 +1,4 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  ...
-}: {
+{ inputs, outputs, lib, config, ... }: {
 
   xdg.enable = true;
   xdg.userDirs = {
@@ -19,5 +13,5 @@
     desktop = null;
     publicShare = null;
   };
-  
+
 }

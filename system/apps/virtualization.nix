@@ -1,9 +1,8 @@
-{ config, pkgs, username, ... }: {
+{ config, pkgs, userSettings, ... }: {
 
-  virtualisation.virtualbox.host = {
-    enable = true;
-    enableExtensionPack = true;
-  };
-  users.extraGroups.vboxusers.members = [ username ];
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  
+  users.users.${userSettings.username}.extraGroups = [ "libvirtd" ];
 
 }

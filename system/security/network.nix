@@ -4,12 +4,12 @@
   lib,
   config,
   pkgs,
-  hostname,
+  systemSettings,
   ...
 }: {
 
  # Enable networking
-  networking.hostName = hostname;
+  networking.hostName = systemSettings.hostname;
   networking.networkmanager.enable = true;
   networking.firewall = {
     enable = false;

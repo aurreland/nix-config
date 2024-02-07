@@ -1,4 +1,4 @@
-{
+{ userSettings, ... }: {
   programs.nixvim = {
     autoCmd = [
       {
@@ -38,8 +38,8 @@
         '';
 
         "core.dirman".config.workspaces = {
-          notes = "~/notes";
-          nix = "~/perso/nix/notes";
+          school = "~/Media/Documents/School/";
+          nix = userSettings.dotfilesDir;
         };
 
         "core.concealer".__empty = null;

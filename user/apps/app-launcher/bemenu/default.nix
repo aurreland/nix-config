@@ -3,9 +3,7 @@
   programs.bemenu = {
     enable = true;
     settings = {
-      #width = 600;
-      #height = 400;
-      #mode = "drun";
+      line-height = 32;
     };
   };
 
