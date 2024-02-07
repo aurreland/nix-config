@@ -1,7 +1,0 @@
-0000000000000000000000000000000000000000 32362d0befe75b60363d7765a4ddf184deed9a68 aurreland <aurelien.andreo@proton.me> 1706120380 +0100	commit (initial): First Commit
-32362d0befe75b60363d7765a4ddf184deed9a68 ec4994756ac53d9ac6694a25187a4360b14d131c aurreland <aurelien.andreo@proton.me> 1706121117 +0100	commit: Changed pokemon-colorscripts.nix locations
-ec4994756ac53d9ac6694a25187a4360b14d131c 73a70746c8ff55b92daad6fdcf7b5be50e12fbc4 aurreland <aurelien.andreo@proton.me> 1706121370 +0100	commit: Change pokemon-colorscripts.nix location
-73a70746c8ff55b92daad6fdcf7b5be50e12fbc4 338d48bb37ee5c0b98a58e744af3338cf1d96d01 aurreland <aurelien.andreo@proton.me> 1706121628 +0100	commit: Changed pokemon colorscripts location
-338d48bb37ee5c0b98a58e744af3338cf1d96d01 2d2a8218dc21030aaf8edd570236be0274de87b0 aurreland <aurelien.andreo@proton.me> 1706121833 +0100	commit: Updated cli.nix
-2d2a8218dc21030aaf8edd570236be0274de87b0 70f0f19c36eec33702d7ac58a65913a2e90b12bf aurreland <aurelien.andreo@proton.me> 1706122150 +0100	commit: Added bemenu
-70f0f19c36eec33702d7ac58a65913a2e90b12bf 47bdc62b043b96aff5278fb1d3bd0c3085a77cb8 aurreland <aurelien.andreo@proton.me> 1706122380 +0100	commit: Reload eww when hm is reloaded.
