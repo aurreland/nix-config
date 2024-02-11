@@ -1,8 +1,7 @@
 {
   programs.nixvim = {
     highlight.Todo = {
-      fg = "Blue";
-      bg = "Yellow";
+      fg = "Yellow";
     };
 
     match.TODO = "TODO";

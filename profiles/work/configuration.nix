@@ -6,6 +6,7 @@
     ../../system/security/default.nix
     ../../system/style/default.nix
     ../../system/apps/virtualization.nix
+    ../../system/apps/flatpak.nix
   ];
 
   nixpkgs = {

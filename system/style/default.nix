@@ -14,10 +14,13 @@ in
 
     polarity = themePolarity;
 
-    image = pkgs.fetchurl {
-      url = backgroundUrl;
-      sha256 = backgroundSha256;
-    };
+    image =
+      if userSettings.wallpaper
+      then ../../wallpaper
+      else pkgs.fetchurl {
+             url = backgroundUrl;
+             sha256 = backgroundSha256;
+           };
 
     base16Scheme = ./. + themePath;
 

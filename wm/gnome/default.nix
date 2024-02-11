@@ -29,16 +29,21 @@
   environment.systemPackages = with pkgs; [
     gnome3.gnome-tweaks
   ];
-  
+
   environment.gnome.excludePackages = (with pkgs; [
-    gnome-tour 
+    gnome-tour
+    gnome-photos
   ]) ++ (with pkgs.gnome; [
     tali # poker game
     iagno # go game
+    geary # Mail Client
     hitori # sudoku game
     atomix # puzzle game
     yelp # Help view
     gnome-initial-setup
+    gnome-music # Music app
+    totem # video player
+    eog # Image Viewer
   ]);
 
 }

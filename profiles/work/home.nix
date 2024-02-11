@@ -2,8 +2,9 @@
   imports = [
     (../../. + "/wm"+("/"+userSettings.wm)+"/home.nix")
     (../../. + "/hosts"+("/"+systemSettings.host)+"/home.nix")
-    ../../user/apps/zathura/default.nix
-    ../../user/apps/cli/lf/default.nix
+    # ../../user/apps/zathura/default.nix
+    # ../../user/apps/flatpak/default.nix
+    # ../../user/apps/cli/lf/default.nix
     ../../user/apps/cli/neovim/default.nix
     ../../user/apps/cli/git/default.nix
     ../../user/lang/rust/default.nix
@@ -12,7 +13,7 @@
     ../../user/shell/default.nix
     ../../user/style/default.nix
     ../../user/apps/discord/default.nix
-    ../../user/services/music/default.nix
+    # ../../user/services/music/default.nix
     ../../user/apps/virtualization.nix
   ];
 
@@ -35,35 +36,38 @@
   };
 
   home.packages = with pkgs; [
-    easytag
-    mpv
-    anki
+    # Base utilities
+    gthumb # Image Viewer
+    fragments # Torrents Manager
+    foliate # Ebook Viewer
+    pika-backup # Backup Files
+    wordbook # English Dictionary
+    komikku # Manga Reader
+    pavucontrol # Manage Sound
+    wike # Wikipedia Viewer
+    gnome-obfuscate # Blur Screenshots
+    mousai # Shazam
+    citations # Manage References
+    dialect # Traductions
+    clapper # View videos
+    gnome-secrets # Manage KeePass DataBase
+    gnome.nautilus # File Manager
+    gnome.sushi # File Previewer for Nautilus
+
+    # Configuring Mice / KB / Joysticks
     piper
-    shortwave
-    cozy
-    mousai
-    # textpieces
-    blanket
-    amberol
-    citations
-    dialect
-    emblem
-    # file shredder
-    fragments
-    # impression
-    junction
-    komikku
-    # letterpress
-    pika-backup
-    # paper clip
-    gnome-podcasts
-    newsflash
-    gnome-obfuscate
-    gnome.polari
-    gnome-secrets
-    tangram
-    # telegraph
-    wike
+    antimicrox
+
+    # Music
+    lollypop # Music Player
+    kid3 # Music Tagger / Needed by lollypop
+    shortwave # Radio
+    blanket # Background Sounds
+
+    # Notes / School
+    anki # Flashcard For Revision
+    texliveFull # Enables Latex
+
   ];
 
   # Enable home-manager and git

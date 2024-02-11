@@ -15,6 +15,7 @@
     htop
     hwinfo
     most
+    youtube-dl
     unzip
     pfetch
     octave

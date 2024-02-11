@@ -43,6 +43,7 @@
           "<CR>" = "cmp.mapping.confirm({ select = true })";
         };
 
+        autoEnableSources = true;
         sources = [
           {name = "path";}
           {name = "nvim_lsp";}

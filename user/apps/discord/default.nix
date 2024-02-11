@@ -6,7 +6,7 @@ with config.stylix.fonts;
 {
 
   programs.discocss = {
-    # enable = true;
+    enable = true;
 #     discordAlias = true;
 #     css = ''
 # .theme-dark {

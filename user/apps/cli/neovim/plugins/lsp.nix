@@ -26,6 +26,12 @@
           clangd.enable = true;
           lua-ls.enable = true;
           texlab.enable = true;
+          tsserver.enable = true;
+          rust-analyzer = {
+            enable = true;
+            installRustc = true;
+            installCargo = true;
+          };
         };
       };
     };

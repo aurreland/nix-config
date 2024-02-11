@@ -15,8 +15,6 @@ let
       gamescope
       mangohud
     ];
-    extraLibraries = pkgs: [ pkgs.gperftools ];
-    
   };
 in
 {

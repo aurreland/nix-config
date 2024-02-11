@@ -32,6 +32,7 @@
       wm = "gnome";
       term = "";
       theme = "ashes";
+      wallpaper = true; # Wheter to use wallpaper in the dir or from the theme
     };
 
     # This is a function that generates an attribute by calling a function you
